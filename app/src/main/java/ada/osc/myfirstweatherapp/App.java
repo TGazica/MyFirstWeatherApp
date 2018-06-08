@@ -7,7 +7,9 @@ import ada.osc.myfirstweatherapp.interactor.ApiInteractor;
 import ada.osc.myfirstweatherapp.interactor.ApiInteractorImpl;
 import ada.osc.myfirstweatherapp.networking.ApiService;
 import ada.osc.myfirstweatherapp.networking.RetrofitUtil;
+import ada.osc.myfirstweatherapp.persistance.RealmDatabase;
 import ada.osc.myfirstweatherapp.uitil.Constants;
+import io.realm.Realm;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import retrofit2.Retrofit;
@@ -17,6 +19,7 @@ public class App extends Application {
 
     private static App sInstance;
     private static ApiInteractor apiInteractor;
+    private static Realm realm;
 
     @Override
     public void onCreate() {
@@ -29,6 +32,8 @@ public class App extends Application {
 
         apiInteractor = new ApiInteractorImpl(apiService);
 
+        realm = RealmDatabase.createRealm(getApplicationContext());
+
     }
 
     public static App getInstance() {
@@ -37,6 +42,10 @@ public class App extends Application {
 
     public static ApiInteractor getApiInteractor(){
         return apiInteractor;
+    }
+
+    public static Realm getRealm() {
+        return realm;
     }
 
 }

@@ -84,16 +84,16 @@ public class WeatherFragment extends Fragment implements WeatherContract.View {
 
     @Override
     public void setCurrentTemperatureValues(double temperatureValues) {
-        currentTemp.setText(getString(R.string.current_temperature_message, toCelsiusFromKelvin(temperatureValues)));
+        currentTemp.setText(getString(R.string.current_temperature_message, temperatureValues));
     }
 
     public void setMinTemperatureValues(double minTemperatureValues) {
-        minTemp.setText(getString(R.string.minimum_temperature_message, toCelsiusFromKelvin(minTemperatureValues)));
+        minTemp.setText(getString(R.string.minimum_temperature_message, minTemperatureValues));
     }
 
     @Override
     public void setMaxTemperatureValues(double maxTemperatureValues) {
-        maxTemp.setText(getString(R.string.maximum_temperature_message, toCelsiusFromKelvin(maxTemperatureValues)));
+        maxTemp.setText(getString(R.string.maximum_temperature_message, maxTemperatureValues));
     }
 
     @Override
@@ -124,10 +124,6 @@ public class WeatherFragment extends Fragment implements WeatherContract.View {
         if (NetworkUtils.checkIfInternetConnectionIsAvailable(getActivity())) {
             presenter.getWeatherFromNet(cityToDisplay);
         }
-    }
-
-    private double toCelsiusFromKelvin(double temperature) {
-        return temperature - 273;
     }
 
 }

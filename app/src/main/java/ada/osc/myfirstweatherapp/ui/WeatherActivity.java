@@ -13,6 +13,7 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 
+import ada.osc.myfirstweatherapp.App;
 import ada.osc.myfirstweatherapp.adapter.CustomViewPagerFragmentAdapter;
 import ada.osc.myfirstweatherapp.R;
 import ada.osc.myfirstweatherapp.model.LocationWrapper;
@@ -35,8 +36,7 @@ public class WeatherActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        Realm.init(this);
-        realm = Realm.getDefaultInstance();
+        realm = App.getRealm();
         initUI();
         initToolbar();
 

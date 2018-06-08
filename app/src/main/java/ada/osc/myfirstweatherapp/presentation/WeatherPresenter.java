@@ -100,17 +100,17 @@ public class WeatherPresenter implements WeatherContract.Presenter {
 
     @Override
     public void getCurrentTemperatureValues(double temperatureValues) {
-        weatherView.setCurrentTemperatureValues(temperatureValues);
+        weatherView.setCurrentTemperatureValues(toCelsiusFromKelvin(temperatureValues));
     }
 
     @Override
     public void getMinTemperatureValues(double minTemperatureValues) {
-        weatherView.setMinTemperatureValues(minTemperatureValues);
+        weatherView.setMinTemperatureValues(toCelsiusFromKelvin(minTemperatureValues));
     }
 
     @Override
     public void getMaxTemperatureValues(double maxTemperatureValues) {
-        weatherView.setMaxTemperatureValues(maxTemperatureValues);
+        weatherView.setMaxTemperatureValues(toCelsiusFromKelvin(maxTemperatureValues));
     }
 
     @Override
@@ -131,5 +131,9 @@ public class WeatherPresenter implements WeatherContract.Presenter {
     @Override
     public void getDescriptionValues(String descriptionValues) {
         weatherView.setDescriptionValues(descriptionValues);
+    }
+
+    private double toCelsiusFromKelvin(double temperature) {
+        return temperature - 273;
     }
 }

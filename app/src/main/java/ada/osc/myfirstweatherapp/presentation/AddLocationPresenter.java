@@ -1,5 +1,6 @@
 package ada.osc.myfirstweatherapp.presentation;
 
+import ada.osc.myfirstweatherapp.App;
 import ada.osc.myfirstweatherapp.model.LocationWrapper;
 import ada.osc.myfirstweatherapp.ui.addLocation.add.AddLocationContract;
 import io.realm.Realm;
@@ -12,7 +13,7 @@ public class AddLocationPresenter implements AddLocationContract.Presenter{
     @Override
     public void setView(AddLocationContract.View addLocationView) {
         this.addLocationView = addLocationView;
-        realm = Realm.getDefaultInstance();
+        realm = App.getRealm();
     }
 
     @Override
